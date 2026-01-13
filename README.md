@@ -142,7 +142,7 @@ google-generativeai
 Default Configuration (change this)
 Host: localhost
 User: root
-Password: aditya18
+Password: your-password
 Database: options_analytics
 
 
