@@ -190,28 +190,6 @@ Stress test comparison
 
 Copyable text summaries
 
-🛑 Important Warnings (Read This)
-
-You are currently doing all of the following wrong:
-
-❌ Hard-coding database passwords
-
-❌ No .env usage
-
-❌ No migrations (raw SQL everywhere)
-
-❌ ML model retrained on every run (wasteful)
-
-❌ No unit tests
-
-❌ No async handling for I/O
-
-❌ No rate limiting for Gemini calls
-
-❌ No Docker / deployment config
-
-This is a strong prototype, not a production system.
-
 🧠 Who This Is For
 
 Quant & finance students
