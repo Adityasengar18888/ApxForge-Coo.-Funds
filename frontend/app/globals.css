@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ios-bg: #F2F2F7;
+  --ios-secondary-bg: #E5E5EA;
+  --ios-card: #FFFFFF;
+  --ios-grouped: #F2F2F7;
+  --ios-separator: rgba(60, 60, 67, 0.29);
+  --ios-hairline: rgba(60, 60, 67, 0.15);
+  --ios-text: #000000;
+  --ios-secondary-text: #8E8E93;
+  --ios-tertiary-text: #C7C7CC;
+
+  /* iOS System Colors */
+  --ios-blue: #007AFF;
+  --ios-green: #34C759;
+  --ios-red: #FF3B30;
+  --ios-orange: #FF9500;
+  --ios-yellow: #FFCC00;
+  --ios-purple: #AF52DE;
+  --ios-teal: #5AC8FA;
+  --ios-pink: #FF2D55;
+  --ios-indigo: #5856D6;
+
+  /* Frosted Glass Overlay */
+  --ios-glass: rgba(255, 255, 255, 0.82);
+  --ios-card-glass: rgba(255, 255, 255, 0.72);
+}
+
+.dark {
+  --ios-bg: #000000;
+  --ios-secondary-bg: #1C1C1E;
+  --ios-card: #1C1C1E;
+  --ios-grouped: #000000;
+  --ios-separator: rgba(84, 84, 88, 0.65);
+  --ios-hairline: rgba(84, 84, 88, 0.35);
+  --ios-text: #FFFFFF;
+  --ios-secondary-text: #8E8E93;
+  --ios-tertiary-text: #48484A;
+
+  /* iOS System Colors (Dark Variants) */
+  --ios-blue: #0A84FF;
+  --ios-green: #30D158;
+  --ios-red: #FF453A;
+  --ios-orange: #FF9F0A;
+  --ios-yellow: #FFD60A;
+  --ios-purple: #BF5AF2;
+  --ios-teal: #64D2FF;
+  --ios-pink: #FF375F;
+  --ios-indigo: #5E5CE6;
+
+  /* Frosted Glass Overlay */
+  --ios-glass: rgba(28, 28, 30, 0.82);
+  --ios-card-glass: rgba(28, 28, 30, 0.72);
+}
+
+body {
+  background-color: var(--ios-bg);
+  color: var(--ios-text);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* iOS Frosted Glass Header / Sidebar */
+.ios-blur {
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  background-color: var(--ios-glass);
+}
+
+.ios-card-blur {
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  background-color: var(--ios-card-glass);
+}
+
+/* Hairline borders */
+.ios-hairline-b {
+  border-bottom: 1px solid var(--ios-hairline);
+}
+
+.ios-hairline-t {
+  border-top: 1px solid var(--ios-hairline);
+}
+
+.ios-hairline {
+  border: 1px solid var(--ios-hairline);
+}
+
+/* Active touch feedback */
+.ios-press:active {
+  transform: scale(0.97);
+  transition: transform 0.15s ease-out;
+}
