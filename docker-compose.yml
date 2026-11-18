@@ -1,0 +1,32 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=sqlite:////app/data/apxforge.db
+      - SECRET_KEY=09d25e094faa6ca2556c818166b7a9563b93f7099f6f0f4caa6cf63b88e8d3e7
+      - DEFAULT_ADMIN_USER=admin
+      - DEFAULT_ADMIN_PASSWORD=admin123
+      - USE_MOCK_DATA=false
+    volumes:
+      - backend-db:/app/data
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000/api/v1
+      - NEXT_PUBLIC_SHOW_DEMO_CREDS=true
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  backend-db:
