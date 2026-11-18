@@ -65,5 +65,7 @@ def main():
     train_directional_classifier()
     logger.info("All model registry artifacts trained successfully.")
 
+train_and_register_all = main
+
 if __name__ == "__main__":
     main()
