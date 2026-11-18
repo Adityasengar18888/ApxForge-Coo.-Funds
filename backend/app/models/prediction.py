@@ -17,3 +17,4 @@ class Prediction(SQLModel, table=True):
     features_json: Optional[str] = Field(default=None)
     status: str = Field(default="pending", max_length=20)  # pending, verified, correct, incorrect
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+

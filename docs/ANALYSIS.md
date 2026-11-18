@@ -192,3 +192,4 @@
 | `app.py: Streamlit UI` | `frontend/app/` (Next.js 14 App Router) | Rewrite to Next.js | Modern, responsive Apple HIG design system |
 | `reports/bot.html & script.js` | `frontend/app/(app)/assistant/` & `backend/app/api/v1/` | Port & Secure | Secure backend proxy for AI assistant without leaking keys |
 | `reports/bg.mp4, logo.png` | `frontend/public/` | Port | Static media assets |
+

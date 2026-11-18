@@ -49,3 +49,4 @@ export const Sparkline: React.FC<SparklineProps> = ({
 
   return <ReactECharts option={option} style={{ width: `${width}px`, height: `${height}px` }} />;
 };
+

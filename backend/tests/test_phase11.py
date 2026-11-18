@@ -24,3 +24,4 @@ def test_generate_report():
     assert "risk_profile" in data
     assert "ml_forecast" in data
     assert "regulatory_disclaimer" in data
+

@@ -22,3 +22,4 @@ class User(UserBase, table=True):
     portfolios: List["Portfolio"] = Relationship(back_populates="user")
     backtests: List["Backtest"] = Relationship(back_populates="user")
     alerts: List["Alert"] = Relationship(back_populates="user")
+

@@ -274,3 +274,4 @@ def register_user(
         is_active=new_user.is_active,
         must_change_password=new_user.must_change_password
     )
+

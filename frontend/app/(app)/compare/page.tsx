@@ -125,9 +125,8 @@ export default function ComparePage() {
               </div>
               <div className="text-[13px] text-ios-secondaryText">1Y Total Return</div>
               <div
-                className={`text-[20px] font-bold mt-0.5 ${
-                  isUp ? "text-ios-green" : "text-ios-red"
-                }`}
+                className={`text-[20px] font-bold mt-0.5 ${isUp ? "text-ios-green" : "text-ios-red"
+                  }`}
               >
                 {isUp ? "+" : ""}
                 {summary.total_return_pct}%
@@ -142,3 +141,4 @@ export default function ComparePage() {
     </div>
   );
 }
+

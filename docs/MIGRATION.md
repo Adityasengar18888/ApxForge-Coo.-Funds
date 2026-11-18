@@ -53,3 +53,4 @@ Unit tests in `backend/tests/test_parity.py` assert numeric equality with tolera
 pytest backend/tests/test_parity.py -v
 ```
 All tests pass with 100% mathematical fidelity.
+

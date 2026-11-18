@@ -58,3 +58,4 @@ def compare_symbols(symbols: str = Query(..., description="Comma-separated symbo
         "timeline": normalized_data,
         "summaries": summaries
     }
+

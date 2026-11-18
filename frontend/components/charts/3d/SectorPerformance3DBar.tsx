@@ -59,3 +59,4 @@ export const SectorPerformance3DBar: React.FC<{ height?: number }> = ({ height =
     </ThreeCanvasWrapper>
   );
 };
+

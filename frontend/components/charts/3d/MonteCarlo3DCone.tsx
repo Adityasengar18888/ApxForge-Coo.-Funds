@@ -52,3 +52,4 @@ export const MonteCarlo3DCone: React.FC<{ height?: number }> = ({ height = 420 }
     </ThreeCanvasWrapper>
   );
 };
+

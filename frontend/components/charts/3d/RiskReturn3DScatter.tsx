@@ -68,3 +68,4 @@ export const RiskReturn3DScatter: React.FC<{ height?: number }> = ({ height = 42
     </ThreeCanvasWrapper>
   );
 };
+

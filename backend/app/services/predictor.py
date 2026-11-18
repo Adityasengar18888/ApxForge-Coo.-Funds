@@ -219,3 +219,4 @@ def train_classification_model(
         "model_artifact": model,
         "scaler": scaler
     }
+

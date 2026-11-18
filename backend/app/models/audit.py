@@ -12,3 +12,4 @@ class AuditLog(SQLModel, table=True):
     details: Optional[str] = Field(default=None)
     ip_address: Optional[str] = Field(default=None, max_length=45)
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+

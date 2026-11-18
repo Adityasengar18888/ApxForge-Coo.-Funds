@@ -109,3 +109,4 @@ export const CandlestickChart: React.FC<CandlestickChartProps> = ({ data, height
 
   return <ReactECharts option={option} style={{ height: `${height}px`, width: "100%" }} />;
 };
+

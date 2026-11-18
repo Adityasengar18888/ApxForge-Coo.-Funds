@@ -236,3 +236,4 @@ def simulate_bias_variance_sweep(degrees: List[int] = list(range(1, 11))) -> Lis
         })
 
     return sweep_results
+

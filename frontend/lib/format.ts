@@ -24,3 +24,4 @@ export function formatCompactNumber(value: number): string {
     compactDisplay: "short",
   }).format(value);
 }
+

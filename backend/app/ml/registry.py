@@ -78,3 +78,4 @@ class ModelRegistry:
         return model_name in self.metadata and Path(self.metadata[model_name]["artifact_path"]).exists()
 
 model_registry = ModelRegistry()
+

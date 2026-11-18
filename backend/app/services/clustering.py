@@ -71,3 +71,4 @@ def perform_clustering(
         "elbow_curve": elbow_curve,
         "cluster_assignments": [int(l) for l in labels]
     }
+

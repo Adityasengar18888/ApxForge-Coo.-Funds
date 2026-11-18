@@ -44,3 +44,4 @@ def seed_admin():
                     "  Change it immediately in the web interface or API!\n"
                     "===================================================================="
                 )
+

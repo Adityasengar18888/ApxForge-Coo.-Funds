@@ -68,3 +68,4 @@ def test_risk_metrics():
     assert isinstance(sortino, float)
     assert "parametric_var_amount" in var
     assert var["parametric_var_amount"] >= 0
+

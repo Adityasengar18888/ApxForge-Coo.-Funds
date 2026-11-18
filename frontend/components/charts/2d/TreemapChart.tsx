@@ -60,3 +60,4 @@ export const TreemapChart: React.FC<TreemapChartProps> = ({ data, height = 350 }
 
   return <ReactECharts option={option} style={{ height: `${height}px`, width: "100%" }} />;
 };
+

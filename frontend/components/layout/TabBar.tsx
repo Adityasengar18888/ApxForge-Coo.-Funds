@@ -50,3 +50,4 @@ export const TabBar: React.FC<{ onOpenMenu?: () => void }> = ({ onOpenMenu }) =>
     </div>
   );
 };
+

@@ -16,3 +16,4 @@ def shutdown_scheduler():
     if scheduler.running:
         scheduler.shutdown(wait=False)
         logger.info("APScheduler background service shutdown.")
+

@@ -74,3 +74,4 @@ def approximate_vol_surface(option_df: pd.DataFrame) -> pd.DataFrame:
         return surface
     except Exception:
         return pd.DataFrame()
+

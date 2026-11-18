@@ -96,3 +96,4 @@ def extract_time_series_features(
     }
 
     return data, feature_catalog
+

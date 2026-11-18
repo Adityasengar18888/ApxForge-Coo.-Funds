@@ -43,3 +43,4 @@ def test_alerts_endpoint():
     data = res.json()
     assert "alerts" in data
     assert len(data["alerts"]) > 0
+

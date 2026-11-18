@@ -17,3 +17,4 @@ class Watchlist(SQLModel, table=True):
     added_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
     user: Optional["User"] = Relationship(back_populates="watchlists")
+

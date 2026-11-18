@@ -13,14 +13,14 @@
       "Vega"
     ],
     "metrics": {
-      "rmse": 0.8201,
-      "mae": 0.6159,
-      "mape": 36.72,
-      "r2": 0.9877
+      "rmse": 0.9169,
+      "mae": 0.6755,
+      "mape": 27.88,
+      "r2": 0.9833
     },
     "dataset_snapshot": "synthetic_options_2000",
     "artifact_path": "backend\\app\\ml\\artifacts\\options_pricing_rf_1.0.0.joblib",
-    "trained_at": "2026-11-18T18:59:23.581124+00:00",
+    "trained_at": "2026-11-18T19:26:56.321908+00:00",
     "status": "ready"
   },
   "directional_classifier_rf": {
@@ -41,7 +41,7 @@
     },
     "dataset_snapshot": "aapl_daily_1y",
     "artifact_path": "backend\\app\\ml\\artifacts\\directional_classifier_rf_1.0.0.joblib",
-    "trained_at": "2026-11-18T18:59:25.234517+00:00",
+    "trained_at": "2026-11-18T19:26:58.391115+00:00",
     "status": "ready"
   }
 }

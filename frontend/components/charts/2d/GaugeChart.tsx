@@ -82,3 +82,4 @@ export const GaugeChart: React.FC<GaugeChartProps> = ({
 
   return <ReactECharts option={option} style={{ height: `${height}px`, width: "100%" }} />;
 };
+

@@ -70,3 +70,4 @@ export const PCA3DScatter: React.FC<{ points?: Point3D[]; height?: number }> = (
     </ThreeCanvasWrapper>
   );
 };
+

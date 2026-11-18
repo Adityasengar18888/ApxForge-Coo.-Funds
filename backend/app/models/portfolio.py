@@ -19,3 +19,4 @@ class Portfolio(SQLModel, table=True):
     updated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
     user: Optional["User"] = Relationship(back_populates="portfolios")
+

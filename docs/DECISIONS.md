@@ -48,3 +48,4 @@ This document formalizes the fundamental design and engineering decisions made d
 - **Context**: The legacy codebase possessed no access controls or audit logs.
 - **Decision**: Implement dual-token JWT authentication (short-lived access token, long-lived refresh token in httpOnly cookie), password hashing with bcrypt, IP-based sliding window rate limiting (5 requests/minute), account lockout after 10 failures, forced password change enforcement on default accounts, and an immutable `AuditLog` table.
 - **Consequences**: Enterprise-grade security compliance with complete session auditability.
+

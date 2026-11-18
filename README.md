@@ -175,3 +175,4 @@ cd frontend && pnpm build
 
 > [!NOTE]
 > **DISCLAIMER**: This platform is designed solely for informational, academic, and quantitative research purposes. It does not constitute financial, investment, legal, or tax advice. Derivative pricing calculations and machine learning forecasts are theoretical estimates and statistical projections, not guarantees of future performance.
+

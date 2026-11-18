@@ -37,3 +37,4 @@ export const Toggle: React.FC<ToggleProps> = ({ checked, onChange, disabled = fa
     </button>
   );
 };
+

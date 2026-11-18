@@ -54,3 +54,4 @@ export const Volatility3DSurface: React.FC<{ height?: number }> = ({ height = 42
     </ThreeCanvasWrapper>
   );
 };
+

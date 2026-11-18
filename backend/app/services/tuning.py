@@ -110,3 +110,4 @@ def run_hyperparameter_tuning(
             "trials_history": trials,
             "total_trials": len(trials)
         }
+

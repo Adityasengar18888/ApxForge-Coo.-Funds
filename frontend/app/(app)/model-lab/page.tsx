@@ -436,3 +436,4 @@ export default function ModelLabPage() {
     </div>
   );
 }
+

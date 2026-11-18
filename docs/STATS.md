@@ -48,3 +48,4 @@ $$\text{MSE} = \text{Bias}^2 + \text{Variance} + \sigma^2$$
 Standard K-Fold cross-validation randomly shuffles observations, which causes **severe lookahead bias** when applied to financial time series. ApxForge demonstrates this empirically via the CV comparison engine:
 - **K-Fold**: Random train/test splits inadvertently condition predictions on future price data.
 - **TimeSeriesSplit (Walk-Forward Validation)**: Enforces expanding historical training windows with strictly subsequent testing windows, preserving temporal causality.
+

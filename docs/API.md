@@ -123,3 +123,4 @@ Requires administrative credentials (`role === "admin"`).
 | `POST` | `/admin/models/retrain` | Trigger asynchronous end-to-end retraining pipeline for registered ML models. |
 | `GET` | `/admin/diagnostics` | Real-time process telemetry, memory usage, database file size, and APScheduler jobs. |
 | `GET` | `/admin/audit-logs` | Immutable audit trail of operational and security actions. |
+

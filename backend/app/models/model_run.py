@@ -15,3 +15,4 @@ class ModelRun(SQLModel, table=True):
     artifact_path: Optional[str] = Field(default=None, max_length=255)
     trained_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     status: str = Field(default="ready", max_length=20)  # training, ready, failed
+

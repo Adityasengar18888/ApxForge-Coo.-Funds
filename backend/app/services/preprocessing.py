@@ -137,3 +137,4 @@ def generate_data_quality_report(df: pd.DataFrame) -> Dict[str, Any]:
         "missing_summary": missing_summary,
         "column_stats": column_stats
     }
+

@@ -64,3 +64,4 @@ export const ThreeCanvasWrapper: React.FC<ThreeCanvasWrapperProps> = ({
     </div>
   );
 };
+

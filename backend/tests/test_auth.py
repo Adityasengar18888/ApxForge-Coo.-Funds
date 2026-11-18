@@ -66,3 +66,4 @@ def test_refresh_token(client):
     )
     assert refresh_resp.status_code == 200
     assert "access_token" in refresh_resp.json()
+

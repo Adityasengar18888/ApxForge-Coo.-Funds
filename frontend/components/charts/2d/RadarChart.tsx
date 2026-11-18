@@ -51,3 +51,4 @@ export const RadarChart: React.FC<RadarChartProps> = ({
 
   return <ReactECharts option={option} style={{ height: `${height}px`, width: "100%" }} />;
 };
+

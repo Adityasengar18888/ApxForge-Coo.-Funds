@@ -56,3 +56,4 @@ export const Correlation3DSurface: React.FC<{ height?: number }> = ({ height = 4
     </ThreeCanvasWrapper>
   );
 };
+

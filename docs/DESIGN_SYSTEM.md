@@ -60,3 +60,4 @@ All colors are defined via dynamic CSS variables in `app/globals.css` and mapped
 - `TabBar` & `Sidebar`: Desktop responsive sidebar collapsing to mobile bottom tab bar.
 - `CommandPalette`: Keyboard shortcut `Cmd/Ctrl+K` spotlight search.
 - `ShortcutsModal`: `?` key help overlay.
+
