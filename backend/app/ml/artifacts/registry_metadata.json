@@ -1,0 +1,47 @@
+{
+  "options_pricing_rf": {
+    "model_name": "options_pricing_rf",
+    "version": "1.0.0",
+    "task_type": "regression",
+    "features": [
+      "Spot",
+      "Strike",
+      "T",
+      "Vol",
+      "Delta",
+      "Theta",
+      "Vega"
+    ],
+    "metrics": {
+      "rmse": 0.8201,
+      "mae": 0.6159,
+      "mape": 36.72,
+      "r2": 0.9877
+    },
+    "dataset_snapshot": "synthetic_options_2000",
+    "artifact_path": "backend\\app\\ml\\artifacts\\options_pricing_rf_1.0.0.joblib",
+    "trained_at": "2026-11-18T18:59:23.581124+00:00",
+    "status": "ready"
+  },
+  "directional_classifier_rf": {
+    "model_name": "directional_classifier_rf",
+    "version": "1.0.0",
+    "task_type": "classification",
+    "features": [
+      "return_1d",
+      "return_5d",
+      "Volume"
+    ],
+    "metrics": {
+      "accuracy": 0.5714,
+      "precision": 0.5,
+      "recall": 0.6667,
+      "f1": 0.5714,
+      "roc_auc": 0.6037
+    },
+    "dataset_snapshot": "aapl_daily_1y",
+    "artifact_path": "backend\\app\\ml\\artifacts\\directional_classifier_rf_1.0.0.joblib",
+    "trained_at": "2026-11-18T18:59:25.234517+00:00",
+    "status": "ready"
+  }
+}
