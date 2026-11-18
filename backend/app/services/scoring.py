@@ -138,3 +138,21 @@ def calculate_correlation_matrix(price_dict: Dict[str, pd.Series]) -> pd.DataFra
     for sym, prices in price_dict.items():
         returns_df[sym] = np.log(prices / prices.shift(1))
     return returns_df.dropna().corr()
+
+def calculate_risk_metrics(returns: np.ndarray | pd.Series) -> Dict[str, float]:
+    """Calculates standardized risk summary metrics."""
+    s = pd.Series(returns) if isinstance(returns, np.ndarray) else returns
+    prices = (1.0 + s).cumprod()
+    sharpe = calculate_sharpe_ratio(s)
+    sortino = calculate_sortino_ratio(s)
+    max_dd, _, _ = calculate_max_drawdown(prices)
+    var = calculate_var_95(s)
+
+    return {
+        "sharpe_ratio": round(sharpe, 2),
+        "sortino_ratio": round(sortino, 2),
+        "max_drawdown_pct": round(abs(max_dd) * 100, 2),
+        "var_95_pct": round(var["parametric_var_pct"] * 100, 2),
+        "volatility_annualized_pct": round(float(s.std() * np.sqrt(252) * 100), 2) if len(s) > 1 else 0.0,
+    }
+

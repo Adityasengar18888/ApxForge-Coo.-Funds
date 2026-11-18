@@ -156,3 +156,8 @@ def compute_all_indicators(df: pd.DataFrame) -> pd.DataFrame:
         data[f"Ichimoku_{k}"] = v
 
     return data
+
+# Aliases for interoperability
+compute_technical_indicators = compute_all_indicators
+compute_historical_volatility = historical_volatility
+
