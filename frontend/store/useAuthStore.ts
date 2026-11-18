@@ -36,7 +36,7 @@ export const useAuthStore = create<AuthState>((set) => ({
       user,
       isAuthenticated: !!user,
       isLoading: false,
-      showPasswordModal: user?.must_change_password || false,
+      showPasswordModal: false,
     }),
 
   setTokens: (accessToken, refreshToken) => {

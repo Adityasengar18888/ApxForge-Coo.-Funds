@@ -22,7 +22,7 @@ def seed_admin():
                 full_name="System Administrator",
                 role="admin",
                 is_active=True,
-                must_change_password=True,
+                must_change_password=False,
                 hashed_password=get_password_hash(settings.DEFAULT_ADMIN_PASSWORD)
             )
             session.add(admin_user)

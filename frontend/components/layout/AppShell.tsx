@@ -7,7 +7,6 @@ import { Header } from "./Header";
 import { TabBar } from "./TabBar";
 import { CommandPalette } from "./CommandPalette";
 import { ShortcutsOverlay } from "./ShortcutsOverlay";
-import { ChangePasswordModal } from "./ChangePasswordModal";
 import { useAuthStore } from "@/store/useAuthStore";
 import { apiClient } from "@/lib/api";
 
@@ -67,7 +66,6 @@ export const AppShell: React.FC<AppShellProps> = ({ children }) => {
 
       <CommandPalette isOpen={isCommandOpen} onClose={() => setIsCommandOpen(false)} />
       <ShortcutsOverlay isOpen={isShortcutsOpen} onClose={() => setIsShortcutsOpen(false)} />
-      <ChangePasswordModal />
     </div>
   );
 };
