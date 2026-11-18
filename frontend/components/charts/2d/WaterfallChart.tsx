@@ -12,9 +12,10 @@ interface WaterfallItem {
 interface WaterfallChartProps {
   items: WaterfallItem[];
   height?: number;
+  totalLabel?: string;
 }
 
-export const WaterfallChart: React.FC<WaterfallChartProps> = ({ items, height = 350 }) => {
+export const WaterfallChart: React.FC<WaterfallChartProps> = ({ items, height = 350, totalLabel = "Total" }) => {
   const { theme } = useTheme();
   const isDark = theme === "dark";
 

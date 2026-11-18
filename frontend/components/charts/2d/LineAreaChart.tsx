@@ -11,6 +11,7 @@ interface LineAreaChartProps {
     data: number[];
     color?: string;
     area?: boolean;
+    areaOpacity?: number;
   }[];
   height?: number;
   yAxisLabel?: string;
@@ -65,7 +66,7 @@ export const LineAreaChart: React.FC<LineAreaChartProps> = ({
         data: s.data,
         itemStyle: { color: col },
         lineStyle: { width: 2.5 },
-        areaStyle: s.area
+        areaStyle: (s.area || s.areaOpacity !== undefined)
           ? {
               color: {
                 type: "linear",
@@ -74,7 +75,7 @@ export const LineAreaChart: React.FC<LineAreaChartProps> = ({
                 x2: 0,
                 y2: 1,
                 colorStops: [
-                  { offset: 0, color: `${col}40` },
+                  { offset: 0, color: `${col}${s.areaOpacity ? Math.round(s.areaOpacity * 255).toString(16).padStart(2, '0') : '40'}` },
                   { offset: 1, color: `${col}00` },
                 ],
               },

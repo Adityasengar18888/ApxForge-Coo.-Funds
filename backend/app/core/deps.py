@@ -15,7 +15,27 @@ oauth2_scheme = OAuth2PasswordBearer(
     auto_error=False
 )
 
-# In-memory rate limiting and failure lockout tracking:
+# Alias get_db to get_session
+get_db = get_session
+
+def get_current_user_optional(
+    request: Request,
+    token: Optional[str] = Depends(oauth2_scheme),
+    session: Session = Depends(get_session)
+) -> Optional[User]:
+    auth_token = token or request.cookies.get("access_token")
+    if not auth_token:
+        return None
+    try:
+        payload = decode_token(auth_token)
+        if not payload or payload.get("type") != "access":
+            return None
+        username: Optional[str] = payload.get("sub")
+        if not username:
+            return None
+        return session.exec(select(User).where(User.username == username)).first()
+    except Exception:
+        return None
 # { ip: [timestamp, timestamp, ...] }
 login_attempts: Dict[str, list] = {}
 # { ip: lockout_until_datetime }

@@ -9,11 +9,11 @@ interface SelectOption {
 
 interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   label?: string;
-  options: SelectOption[];
+  options?: SelectOption[];
   error?: string;
 }
 
-export const Select: React.FC<SelectProps> = ({ label, options, error, className, ...props }) => {
+export const Select: React.FC<SelectProps> = ({ label, options, error, className, children, ...props }) => {
   return (
     <div className="w-full">
       {label && (
@@ -30,11 +30,13 @@ export const Select: React.FC<SelectProps> = ({ label, options, error, className
           )}
           {...props}
         >
-          {options.map((opt) => (
-            <option key={opt.value} value={opt.value} className="bg-ios-card text-ios-text">
-              {opt.label}
-            </option>
-          ))}
+          {options
+            ? options.map((opt) => (
+                <option key={opt.value} value={opt.value} className="bg-ios-card text-ios-text">
+                  {opt.label}
+                </option>
+              ))
+            : children}
         </select>
         <ChevronDown className="absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-ios-secondaryText pointer-events-none" />
       </div>
