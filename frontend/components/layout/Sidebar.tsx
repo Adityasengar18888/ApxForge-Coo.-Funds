@@ -29,7 +29,19 @@ import {
 import { useAuthStore } from "@/store/useAuthStore";
 import { cn } from "@/lib/utils";
 
-export const navigationItems = [
+// Items moved to the top Header Bar
+export const headerNavItems = [
+  { name: "Screener", href: "/screener", icon: Filter },
+  { name: "Compare", href: "/compare", icon: ArrowLeftRight },
+  { name: "Watchlist", href: "/watchlist", icon: Bookmark },
+  { name: "Portfolio", href: "/portfolio", icon: Briefcase },
+  { name: "News", href: "/news", icon: Newspaper },
+  { name: "Alerts", href: "/alerts", icon: Bell },
+  { name: "Reports", href: "/reports", icon: FileText },
+];
+
+// Left Sidebar Navigation Sections
+export const sidebarNavigationItems = [
   {
     section: "Overview",
     items: [
@@ -37,15 +49,6 @@ export const navigationItems = [
       { name: "Markets", href: "/markets", icon: TrendingUp },
       { name: "Stocks", href: "/stocks", icon: BarChart2 },
       { name: "Funds", href: "/funds", icon: Layers },
-    ],
-  },
-  {
-    section: "Tools & Portfolios",
-    items: [
-      { name: "Screener", href: "/screener", icon: Filter },
-      { name: "Compare", href: "/compare", icon: ArrowLeftRight },
-      { name: "Watchlist", href: "/watchlist", icon: Bookmark },
-      { name: "Portfolio", href: "/portfolio", icon: Briefcase },
     ],
   },
   {
@@ -61,14 +64,6 @@ export const navigationItems = [
     ],
   },
   {
-    section: "Intelligence & Output",
-    items: [
-      { name: "News & Sentiment", href: "/news", icon: Newspaper },
-      { name: "Alerts", href: "/alerts", icon: Bell },
-      { name: "Reports", href: "/reports", icon: FileText },
-    ],
-  },
-  {
     section: "Account",
     items: [
       { name: "Settings", href: "/settings", icon: Settings },
@@ -77,12 +72,21 @@ export const navigationItems = [
   },
 ];
 
+// Master list for CommandPalette search (Cmd/Ctrl+K)
+export const navigationItems = [
+  ...sidebarNavigationItems,
+  {
+    section: "Tools & Intelligence",
+    items: headerNavItems,
+  },
+];
+
 export const Sidebar: React.FC = () => {
   const pathname = usePathname();
   const { user } = useAuthStore();
 
   return (
-    <aside className="hidden md:flex flex-col w-64 h-screen sticky top-0 bg-ios-bg border-r border-ios-hairline overflow-y-auto px-3 py-4 select-none">
+    <aside className="hidden md:flex flex-col w-64 h-screen sticky top-0 bg-ios-bg border-r border-ios-hairline overflow-y-auto px-3 py-4 select-none shrink-0">
       <div className="flex items-center gap-2.5 px-3 mb-6">
         <div className="w-8 h-8 rounded-[10px] bg-ios-blue flex items-center justify-center text-white font-bold text-[17px] shadow-sm">
           A
@@ -94,7 +98,7 @@ export const Sidebar: React.FC = () => {
       </div>
 
       <nav className="flex-1 space-y-5">
-        {navigationItems.map((group) => (
+        {sidebarNavigationItems.map((group) => (
           <div key={group.section}>
             <div className="px-3 pb-1.5 text-[11px] font-semibold tracking-wider uppercase text-ios-secondaryText">
               {group.section}
