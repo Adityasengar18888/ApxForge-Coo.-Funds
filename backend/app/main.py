@@ -13,6 +13,7 @@ from backend.app.api.v1 import (
     stocks,
     funds,
     screener,
+    compare,
     portfolio,
     predict,
     model_lab,
@@ -68,6 +69,7 @@ app.include_router(market.router, prefix=settings.API_V1_STR)
 app.include_router(stocks.router, prefix=settings.API_V1_STR)
 app.include_router(funds.router, prefix=settings.API_V1_STR)
 app.include_router(screener.router, prefix=settings.API_V1_STR)
+app.include_router(compare.router, prefix=settings.API_V1_STR)
 app.include_router(portfolio.router, prefix=settings.API_V1_STR)
 app.include_router(predict.router, prefix=settings.API_V1_STR)
 app.include_router(model_lab.router, prefix=settings.API_V1_STR)
