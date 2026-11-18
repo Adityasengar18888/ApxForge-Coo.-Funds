@@ -18,18 +18,22 @@ def get_market_status():
         "risk_free_rate": 0.05
     }
 
+@router.get("/quote")
 @router.get("/quote/{symbol}")
-def get_quote(symbol: str, refresh: bool = False):
+def get_quote(symbol: Optional[str] = None, refresh: bool = False):
+    sym = symbol or "AAPL"
     try:
-        quote = data_provider.get_quote(symbol)
+        quote = data_provider.get_quote(sym)
         return quote
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to fetch quote: {str(e)}")
 
+@router.get("/history")
 @router.get("/history/{symbol}")
-def get_history(symbol: str, period: str = "1y", refresh: bool = False):
+def get_history(symbol: Optional[str] = None, period: str = "1y", refresh: bool = False):
+    sym = symbol or "AAPL"
     try:
-        df = data_provider.get_history(symbol, period=period)
+        df = data_provider.get_history(sym, period=period)
         if df.empty:
             raise HTTPException(status_code=404, detail="No historical data found")
 
@@ -59,18 +63,21 @@ def get_history(symbol: str, period: str = "1y", refresh: bool = False):
             })
 
         return {
-            "symbol": symbol.upper(),
+            "symbol": sym.upper(),
             "period": period,
             "historical_volatility": round(float(hist_vol), 4),
-            "data": records
+            "data": records,
+            "history": records
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to fetch history: {str(e)}")
 
+@router.get("/fundamentals")
 @router.get("/fundamentals/{symbol}")
-def get_fundamentals(symbol: str):
+def get_fundamentals(symbol: Optional[str] = None):
+    sym = symbol or "AAPL"
     try:
-        return data_provider.get_fundamentals(symbol)
+        return data_provider.get_fundamentals(sym)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
