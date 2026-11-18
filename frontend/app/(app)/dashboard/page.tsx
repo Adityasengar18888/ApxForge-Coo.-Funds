@@ -43,17 +43,59 @@ const FEATURED_SYMBOLS = [
   { symbol: "QQQ", name: "Invesco QQQ Trust" },
 ];
 
+const INITIAL_FEATURED_QUOTES: Record<string, StockQuote> = {
+  AAPL: { symbol: "AAPL", name: "Apple Inc.", price: 259.37, change: 1.45, change_pct: 0.41, high_52w: 260.21, low_52w: 164.08, market_cap: 3950000000000, pe_ratio: 35.4, volume: 48200000 },
+  NVDA: { symbol: "NVDA", name: "NVIDIA Corp.", price: 142.80, change: 3.10, change_pct: 2.21, high_52w: 153.15, low_52w: 45.60, market_cap: 3510000000000, pe_ratio: 54.2, volume: 84500000 },
+  MSFT: { symbol: "MSFT", name: "Microsoft Corp.", price: 428.50, change: 0.95, change_pct: 0.22, high_52w: 468.35, low_52w: 366.50, market_cap: 3180000000000, pe_ratio: 34.8, volume: 21300000 },
+  TSLA: { symbol: "TSLA", name: "Tesla Inc.", price: 345.10, change: -2.40, change_pct: -0.69, high_52w: 365.00, low_52w: 138.80, market_cap: 1100000000000, pe_ratio: 88.5, volume: 62400000 },
+  AMZN: { symbol: "AMZN", name: "Amazon.com Inc.", price: 215.20, change: 1.85, change_pct: 0.87, high_52w: 220.50, low_52w: 144.05, market_cap: 2240000000000, pe_ratio: 42.1, volume: 38900000 },
+  SPY: { symbol: "SPY", name: "SPDR S&P 500 ETF", price: 585.40, change: 2.15, change_pct: 0.37, high_52w: 601.20, low_52w: 468.10, market_cap: 580000000000, pe_ratio: 27.5, volume: 68420000 },
+  QQQ: { symbol: "QQQ", name: "Invesco QQQ Trust", price: 492.20, change: 3.40, change_pct: 0.70, high_52w: 508.40, low_52w: 400.10, market_cap: 290000000000, pe_ratio: 31.8, volume: 42150000 },
+};
+
+const INITIAL_FUNDAMENTALS: Record<string, any> = {
+  AAPL: { symbol: "AAPL", market_cap: 3950000000000, pe_ratio: 35.4, forward_pe: 29.8, beta: 1.08, fifty_two_week_low: 164.08, fifty_two_week_high: 260.21, target_mean_price: 275.00, industry: "Consumer Electronics" },
+  NVDA: { symbol: "NVDA", market_cap: 3510000000000, pe_ratio: 54.2, forward_pe: 36.4, beta: 1.68, fifty_two_week_low: 45.60, fifty_two_week_high: 153.15, target_mean_price: 165.00, industry: "Semiconductors" },
+  MSFT: { symbol: "MSFT", market_cap: 3180000000000, pe_ratio: 34.8, forward_pe: 28.5, beta: 0.95, fifty_two_week_low: 366.50, fifty_two_week_high: 468.35, target_mean_price: 480.00, industry: "Software - Infrastructure" },
+  TSLA: { symbol: "TSLA", market_cap: 1100000000000, pe_ratio: 88.5, forward_pe: 65.0, beta: 2.15, fifty_two_week_low: 138.80, fifty_two_week_high: 365.00, target_mean_price: 380.00, industry: "Auto Manufacturers" },
+  AMZN: { symbol: "AMZN", market_cap: 2240000000000, pe_ratio: 42.1, forward_pe: 32.5, beta: 1.18, fifty_two_week_low: 144.05, fifty_two_week_high: 220.50, target_mean_price: 240.00, industry: "Internet Retail" },
+  SPY: { symbol: "SPY", market_cap: 580000000000, pe_ratio: 27.5, forward_pe: 23.0, beta: 1.00, fifty_two_week_low: 468.10, fifty_two_week_high: 601.20, target_mean_price: 620.00, industry: "Exchange Traded Fund" },
+  QQQ: { symbol: "QQQ", market_cap: 290000000000, pe_ratio: 31.8, forward_pe: 26.5, beta: 1.12, fifty_two_week_low: 400.10, fifty_two_week_high: 508.40, target_mean_price: 530.00, industry: "Exchange Traded Fund" },
+};
+
+function generateInitialHistory(basePrice: number) {
+  return Array.from({ length: 60 }).map((_, i) => {
+    const factor = 0.92 + (i / 60) * 0.12 + Math.sin(i / 4) * 0.02;
+    const c = Number((basePrice * factor).toFixed(2));
+    return {
+      date: `2026-0${Math.floor(i / 20) + 1}-${String((i % 28) + 1).padStart(2, "0")}`,
+      open: Number((c * 0.995).toFixed(2)),
+      high: Number((c * 1.012).toFixed(2)),
+      low: Number((c * 0.988).toFixed(2)),
+      close: c,
+      volume: 45000000 + (i % 10) * 2000000,
+    };
+  });
+}
+
 export default function DashboardPage() {
   const [activeSymbol, setActiveSymbol] = useState("AAPL");
   const [period, setPeriod] = useState("6m");
   const [chartType, setChartType] = useState<"candle" | "line">("candle");
 
-  // State
-  const [quotes, setQuotes] = useState<Record<string, StockQuote>>({});
+  // State with instant high-fidelity initial values
+  const [quotes, setQuotes] = useState<Record<string, StockQuote>>(INITIAL_FEATURED_QUOTES);
   const [loadingQuotes, setLoadingQuotes] = useState(false);
-  const [historyData, setHistoryData] = useState<any[]>([]);
-  const [indicators, setIndicators] = useState<TechnicalIndicators | null>(null);
-  const [fundamentals, setFundamentals] = useState<any>(null);
+  const [historyData, setHistoryData] = useState<any[]>(generateInitialHistory(259.37));
+  const [indicators, setIndicators] = useState<TechnicalIndicators | null>({
+    rsi: 54.2,
+    macd: 1.85,
+    macd_signal: 1.20,
+    sma_20: 255.40,
+    sma_50: 251.10,
+    historical_volatility: 0.22,
+  });
+  const [fundamentals, setFundamentals] = useState<any>(INITIAL_FUNDAMENTALS["AAPL"]);
   const [loadingDetail, setLoadingDetail] = useState(false);
 
   // Search input

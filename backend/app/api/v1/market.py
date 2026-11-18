@@ -99,6 +99,7 @@ def get_option_chain(symbol: str):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@router.get("/price-option")
 @router.post("/price-option")
 def calculate_option(
     spot: float,

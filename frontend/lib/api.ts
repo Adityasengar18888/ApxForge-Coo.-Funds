@@ -1,11 +1,24 @@
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api/v1";
+const getApiBaseUrl = () => {
+  if (process.env.NEXT_PUBLIC_API_URL) {
+    return process.env.NEXT_PUBLIC_API_URL;
+  }
+  if (typeof window !== "undefined") {
+    // Relative URL in browser uses Next.js rewrite proxy - avoids IPv6 refusal and CORS
+    return "/api/v1";
+  }
+  return "http://127.0.0.1:8000/api/v1";
+};
 
 interface RequestOptions extends RequestInit {
   token?: string;
 }
 
 export async function apiClient<T>(endpoint: string, options: RequestOptions = {}): Promise<T> {
-  const url = `${API_BASE_URL}${endpoint.startsWith("/") ? endpoint : `/${endpoint}`}`;
+  const baseUrl = getApiBaseUrl();
+  const cleanEndpoint = endpoint.startsWith("/") ? endpoint : `/${endpoint}`;
+  const url = baseUrl.endsWith("/api/v1") && cleanEndpoint.startsWith("/api/v1")
+    ? `${baseUrl.slice(0, -7)}${cleanEndpoint}`
+    : `${baseUrl}${cleanEndpoint}`;
   
   const headers = new Headers(options.headers || {});
   if (!headers.has("Content-Type") && !(options.body instanceof FormData)) {
