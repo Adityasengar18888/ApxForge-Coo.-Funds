@@ -18,6 +18,11 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCommand, onOpenShortcuts }
   const { theme, setTheme } = useTheme();
   const { user, logout } = useAuthStore();
   const pathname = usePathname();
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <header className="sticky top-0 z-30 flex items-center justify-between h-14 px-3 sm:px-6 ios-blur ios-hairline-b gap-2">
@@ -73,8 +78,17 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCommand, onOpenShortcuts }
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
           title="Toggle Light/Dark Theme"
           className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 text-ios-secondaryText hover:text-ios-text transition-colors ios-press"
+          aria-label="Toggle theme"
         >
-          {theme === "dark" ? <Sun className="w-4 h-4 text-ios-yellow" /> : <Moon className="w-4 h-4 text-ios-indigo" />}
+          {mounted ? (
+            theme === "dark" ? (
+              <Sun className="w-4 h-4 text-ios-yellow" />
+            ) : (
+              <Moon className="w-4 h-4 text-ios-indigo" />
+            )
+          ) : (
+            <div className="w-4 h-4" />
+          )}
         </button>
 
         {user && (
