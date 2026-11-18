@@ -54,6 +54,7 @@ export const navigationItems = [
       { name: "Predictions", href: "/predictions", icon: Sparkles },
       { name: "Model Lab", href: "/model-lab", icon: Cpu },
       { name: "Stats Lab", href: "/stats-lab", icon: Binary },
+      { name: "3D Visualizer", href: "/visualizer-3d", icon: Layers },
       { name: "Risk Lab", href: "/risk-lab", icon: ShieldAlert },
       { name: "Correlation", href: "/correlation", icon: Grid },
       { name: "Backtest", href: "/backtest", icon: History },
